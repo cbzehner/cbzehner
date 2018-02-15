@@ -60,7 +60,9 @@ main =
     match "templates/*" $ compile templateBodyCompiler
 
 config :: Configuration
-config = defaultConfiguration {destinationDirectory = "docs"}
+config =
+  defaultConfiguration
+  {destinationDirectory = "docs", providerDirectory = "src"}
 
 postCtx :: Context String
 postCtx = dateField "date" "%B %e, %Y" `mappend` defaultContext
