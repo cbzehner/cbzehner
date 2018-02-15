@@ -12,8 +12,10 @@ import System.FilePath.Posix
 
 main :: IO ()
 main =
-  hakyll $ -- Setup a custom Config to serve into /docs instead
-   do
+  hakyllWith config $ do
+    match "CNAME" $ do
+      route idRoute
+      compile copyFileCompiler
     match "images/*" $ do
       route idRoute
       compile copyFileCompiler
@@ -56,6 +58,9 @@ main =
           loadAndApplyTemplate "templates/default.html" indexCtx >>=
           relativizeUrls
     match "templates/*" $ compile templateBodyCompiler
+
+config :: Configuration
+config = defaultConfiguration {destinationDirectory = "docs"}
 
 postCtx :: Context String
 postCtx = dateField "date" "%B %e, %Y" `mappend` defaultContext
