@@ -6,6 +6,7 @@ One thing I dislike about the modern email/password system most sites use as aut
 
 Why do I have to put in my email every time? For that matter, why do I put in my email and password on the same screen?
 
+```
 | ----------------------- |
 | Welcome to WebsiteCo!   |
 |                         |
@@ -21,9 +22,11 @@ Why do I have to put in my email every time? For that matter, why do I put in my
 |                         |
 |    (Sign Up?)           |
 | ----------------------- |
+```
 
 should be
 
+```
 | ----------------------- |
 | Welcome to WebsiteCo!   |
 |                         |
@@ -32,9 +35,11 @@ should be
 |   -----------           |
 |                         |
 | ----------------------- |
+```
 
 then either sign me up:
 
+```
 | ----------------------- |
 | Welcome to WebsiteCo!   |
 |                         |
@@ -46,9 +51,11 @@ then either sign me up:
 |   -----------           |
 |                         |
 | ----------------------- |
+```
 
 or sign me in:
 
+```
 | ----------------------- |
 | Welcome to WebsiteCo!   |
 |                         |
@@ -60,5 +67,6 @@ or sign me in:
 |   -----------           |
 |                         |
 | ----------------------- |
+```
 
 PS - use Lastpass! Really!
