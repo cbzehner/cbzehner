@@ -1,5 +1,5 @@
 ---
-title: Rust: Use stable, install nightly
+title: Rust - Use stable, install nightly
 ---
 
 

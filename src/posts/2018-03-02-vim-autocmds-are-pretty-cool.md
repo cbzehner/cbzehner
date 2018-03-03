@@ -1,5 +1,5 @@
 ---
-title: Vim Autocommands are Pretty Cool and so is Testing Code
+title: Vim Autocommands are Pretty Cool
 ---
 
 ## Run tests with minimal effort
@@ -8,8 +8,11 @@ I have a mapping in my vim configuration to run tests for the current file I hav
 map <C-t> :w !t %<CR>
 ```
 Basically this command says `map` the combination of the Control key `C` and the "t" key `t` to the following command.
+
 First, save the file with `:w` because there's no point running tests on the old version of the file.
+
 Then, send the following command `t %` to the console. `!` means everything afterwards goes to the console. If I enter just `t` in my commandline it runs one of my company's test frameworks and `%` is replaced with the path of the current file. Pretty handy!
+
 Finally, end the command with the "Carriage Return" `<CR>`, which is a fancy way of saying "press ENTER!".
 
 Great! Now I can run tests super easily! But what about if I want to use `CTRL-t` outside of work?
