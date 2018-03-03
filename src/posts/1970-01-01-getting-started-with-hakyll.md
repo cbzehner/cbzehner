@@ -1,5 +1,5 @@
 ---
-title: Better "Incorrect Password" UX
+title: Getting Started with Hakyll
 ---
 
 * Clean URLs
