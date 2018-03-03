@@ -1,22 +1,20 @@
 ---
 title: About
 ---
-I'm Chris Zehner, currently working as a Software Developer at Facebook.
-
-I'm a functional programming enthusiast and command-line dabbler.
+I'm Chris Zehner. Functional programming enthusiast, command-line dabbler, systems programming novitiate and occasional web developer.
 
 ### Contact Me
 
 I live in San Francisco, California. You can email me as chris at this address or find me on [twitter](https://twitter.com/cbzehner). Let me know if you're in the area, happy to buy you a cup of coffee and chat.
 
 ### Languages I'm already productive in: Desc
-Hack/HHVM, Haskell, PHP, Python, Javascript, C
+Hack/HHVM, Haskell, PHP, Javascript, Python, C
 
-### Languages I want to focus on in 2018:
-[Rust](https://web.stanford.edu/class/cs140e/assignments/0-blinky/), Algorithms & Data structures, and getting comfortable with Javascript
+### Focus on in 2018:
+[Rust](https://web.stanford.edu/class/cs140e/assignments/0-blinky/), Algorithms & Data structures, and Javascript
 
 ### 2019 Goals: Always looking ahead
-I'm going to became conversant with AI via [Google's AI crash course](https://developers.google.com/machine-learning/crash-course/) and [Deeplearning.ai](https://www.deeplearning.ai/)
+Hop on the ML bandwagon via [Google's AI crash course](https://developers.google.com/machine-learning/crash-course/) and [Deeplearning.ai](https://www.deeplearning.ai/). I think speech recognition and voice interfaces are really interesting.
 
 ### Tools
 * Editor: [Neovim](https://github.com/neovim)
@@ -24,14 +22,13 @@ I'm going to became conversant with AI via [Google's AI crash course](https://de
 * Environment: Remote VM with [Mosh](https://mosh.org/) and [Tmux](https://github.com/tmux/tmux)
 * Local: MacBook Pro or an old Chromebook running [GalliumOS](https://galliumos.org/)
 * Keyboard: Kinesis Advantage
-* Keyboard Layout: Dvorak, although "L" fatigue is real. Workman and Programmers Dvorak both seem interesting.
-* Programs: SizeUp, DropBox, Dejal Time Out, RescueTime, Flux, Caffeine, LittleSnitch
-* Browser: Chrome, it might be time to give FireFox another shot though.
+* Keyboard Layout: Dvorak, "L" fatigue is real
+* Browser: Chrome, it might be time to [give FireFox another shot](https://servo.org/)
 * Browser extensions:
-    [LastPass](https://lastpass.com)
-    [Vimium](https://vimium.github.io/)
-    [TimeWarp](https://chrome.google.com/webstore/detail/timewarp/mmmhadpnjmokjbmgamifipkjddhlfkhi) (hasn't been updated since 2015!)
-    [HTTPS Everywhere](https://www.eff.org/https-everywhere)
+  * [LastPass](https://lastpass.com)
+  * [Vimium](https://vimium.github.io/)
+  * [TimeWarp](https://chrome.google.com/webstore/detail/timewarp/mmmhadpnjmokjbmgamifipkjddhlfkhi) (hasn't been updated since 2015!)
+  * [HTTPS Everywhere](https://www.eff.org/https-everywhere)
 
 ### Opinions
 I support free-trade, universal healthcare and the [EFF](https://www.eff.org/). Please derive the rest.
