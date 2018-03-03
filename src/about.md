@@ -9,11 +9,14 @@ I'm a functional programming enthusiast and command-line dabbler.
 
 I live in San Francisco, California. You can email me as chris at this address or find me on [twitter](https://twitter.com/cbzehner). Let me know if you're in the area, happy to buy you a cup of coffee and chat.
 
-### Languages I'm already productive in:
+### Languages I'm already productive in: Desc
 Hack/HHVM, Haskell, PHP, Python, Javascript, C
 
 ### Languages I want to focus on in 2018:
-[Rust](https://web.stanford.edu/class/cs140e/assignments/0-blinky/), Javascript (I'd like to move this up the list)
+[Rust](https://web.stanford.edu/class/cs140e/assignments/0-blinky/), Algorithms & Data structures, and getting comfortable with Javascript
+
+### 2019 Goals: Always looking ahead
+I'm going to became conversant with AI via [Google's AI crash course](https://developers.google.com/machine-learning/crash-course/) and [Deeplearning.ai](https://www.deeplearning.ai/)
 
 ### Tools
 * Editor: [Neovim](https://github.com/neovim)
