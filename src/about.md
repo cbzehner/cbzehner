@@ -1,20 +1,36 @@
 ---
 title: About
 ---
-I'm Chris Zehner. Functional programming enthusiast, command-line dabbler, systems programming novitiate and occasional web developer.
+Hello! I'm Chris Zehner, your friendly neighborhood engineer.
+
+I'm a functional programming enthusiast, command-line dabbler, systems programming novitiate and occasional web developer.
 
 ### Contact Me
 
-I live in San Francisco, California. You can email me as chris at this address or find me on [twitter](https://twitter.com/cbzehner). Let me know if you're in the area, happy to buy you a cup of coffee and chat.
+I live in San Francisco, California and travel on a semi-regular basis to Vancouver, Canada and Helsinki, Finland.
 
-### Languages I'm already productive in: Desc
-Hack/HHVM, Haskell, PHP, Javascript, Python, C
+Let me know if I can buy you a cup of coffee or tea!
 
-### Focus on in 2018:
-[Rust](https://web.stanford.edu/class/cs140e/assignments/0-blinky/), Algorithms & Data structures, and Javascript
+You can find me as @cbzehner, anywhere accounts are registered.
 
-### 2019 Goals: Always looking ahead
-Hop on the ML bandwagon via [Google's AI crash course](https://developers.google.com/machine-learning/crash-course/) and [Deeplearning.ai](https://www.deeplearning.ai/). I think speech recognition and voice interfaces are really interesting.
+### Programming Languages
+Ordered by my ability to use them productively.
+
+1. Typescript
+2. Rust
+3. Haskell
+4. Hack/HHVM (a.k.a. typed PHP)
+5. Ruby
+6. Python
+7. Go
+8. C
+
+### Web Programming Frameworks
+Ordered by my ability to use them productively.
+
+1. React
+2. Ruby on Rails
+3. Rocket
 
 ### Tools
 * Editor: [Neovim](https://github.com/neovim)
@@ -23,7 +39,7 @@ Hop on the ML bandwagon via [Google's AI crash course](https://developers.google
 * Local: MacBook Pro or an old Chromebook running [GalliumOS](https://galliumos.org/)
 * Keyboard: Kinesis Advantage
 * Keyboard Layout: Dvorak, "L" fatigue is real
-* Browser: Chrome, it might be time to [give FireFox another shot](https://servo.org/)
+* Browser: Chrome, it might be time to give FireFox another shot
 * Browser extensions:
   * [LastPass](https://lastpass.com)
   * [Vimium](https://vimium.github.io/)
@@ -36,4 +52,6 @@ I support free-trade, universal healthcare and the [EFF](https://www.eff.org/). 
 ### Journey :: Motivation -> Fun -> Profit -> Knowledge
 Before I was paid to code, I improved GBDT and logistic regression models and worked on fraud-detection infrastructure and ETL for payments data at Facebook.
 
-I had a lot of help from colleagues at Facebook and spent much of my time outside of work learning to code before moving into my current job, where I'm reasonably compensated for my machine-whispering abilities.
+I had a lot of help from colleagues at Facebook and spent much of my time outside of work learning to code before moving onto the Community Operations Engineering team, working on building internal tools for Facebook's global workforce.
+
+After 5 years at Facebook, I joined Atrium Legal Technology Services as Lead Software Engineer where I'm reasonably compensated for my machine-whispering abilities.
