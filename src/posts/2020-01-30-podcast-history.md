@@ -2,9 +2,7 @@
 title: Podcast History
 ---
 
-Hi Supercasters, 
-
-Thanks for dropping by! Here's a highlight reel of my history with podcasts:
+Here's a highlight reel of my history with podcasts:
 
 I first started listening to podcasts like [Planet Money](https://www.npr.org/sections/money/) and [This American Life](https://www.thisamericanlife.org/) on my iPod when I was an exchange student in Koblenz, Germany for a year.
 
