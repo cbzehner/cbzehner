@@ -1,10 +1,9 @@
 +++
 title = "Switching to Zola from Hakyll"
-date = 2019-04-07
-draft = false
+date = 2020-04-07
 
 [taxonomies]
-# tags = ["rust", "web"]
+tags = ["rust", "web"]
 categories = ["programming"]
 +++
 

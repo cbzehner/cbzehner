@@ -30,8 +30,8 @@ even_title = ""
 # Set the navigation options for the site
 even_menu = [
     { url = "/", name = "Thoughts" },
+    { url = "https://github.com/cbzehner", name = "Code" },
     { url = "/about", name = "About" },
-    { url = "https://github.com/cbzehner", name = "Code" }
 ]
 
 # Set the author
