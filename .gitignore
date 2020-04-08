@@ -1,3 +1,2 @@
-_cache/
-_site/
-.stack-work/
+# Exclude the build directory from version control
+public/
