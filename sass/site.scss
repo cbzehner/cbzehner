@@ -8,3 +8,7 @@
 code {
     font-size: 70%;
 }
+
+main .about pre code, main .post pre code {
+    background: unset;
+}
