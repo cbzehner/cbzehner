@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+      <!-- Enable responsiveness on mobile devices-->
+      <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+
+      <title>Chris Zehner - Switching to Zola from Hakyll</title>
+
+      
+
+      
+          <script src="https://cdnjs.cloudflare.com/ajax/libs/slideout/1.0.1/slideout.min.js"></script>
+          
+      
+
+      
+          <link rel="stylesheet" href="https:&#x2F;&#x2F;cbzehner.com&#x2F;site.css">
+          
+      
+
+      
+      
+    </head>
+
+    <body>
+        <div class="container">
+
+            <div id="mobile-navbar" class="mobile-navbar">
+              <div class="mobile-header-logo">
+                <a href="/" class="logo"></a>
+              </div>
+              <div class="mobile-navbar-icon icon-out">
+                <span></span>
+                <span></span>
+                <span></span>
+              </div>
+            </div>
+
+            <nav id="mobile-menu" class="mobile-menu slideout-menu slideout-menu-left">
+              <ul class="mobile-menu-list">
+                
+                    <li class="mobile-menu-item">
+                        <a href="&#x2F;">
+                            Thoughts
+                        </a>
+                    </li>
+                
+                    <li class="mobile-menu-item">
+                        <a href="https:&#x2F;&#x2F;github.com&#x2F;cbzehner">
+                            Code
+                        </a>
+                    </li>
+                
+                    <li class="mobile-menu-item">
+                        <a href="&#x2F;about">
+                            About
+                        </a>
+                    </li>
+                
+              </ul>
+            </nav>
+
+            <header id="header">
+                <div class="logo"><a href="https:&#x2F;&#x2F;cbzehner.com"></a></div>
+                <nav class="menu">
+                    <ul>
+                        
+                            <li>
+                                <a href="&#x2F;">
+                                    Thoughts
+                                </a>
+                            </li>
+                        
+                            <li>
+                                <a href="https:&#x2F;&#x2F;github.com&#x2F;cbzehner">
+                                    Code
+                                </a>
+                            </li>
+                        
+                            <li>
+                                <a href="&#x2F;about">
+                                    About
+                                </a>
+                            </li>
+                        
+                    </ul>
+                </nav>
+            </header>
+
+            <main>
+                <div class="content" id="mobile-panel">
+                    
+
+
+<div class="post-toc" id="post-toc">
+    <h2 class="post-toc-title">Contents</h2>
+    <div class="post-toc-content always-active">
+        <nav id="TableOfContents">
+            <ul>
+                
+                <li>
+                    <a href="https://cbzehner.com/getting-started-with-zola/#time-for-a-change" class="toc-link">Time for a Change</a>
+                    
+                </li>
+                
+                <li>
+                    <a href="https://cbzehner.com/getting-started-with-zola/#getting-started-with-zola" class="toc-link">Getting Started with Zola</a>
+                    
+                    <ul>
+                        
+                        <li>
+                            <a href="https://cbzehner.com/getting-started-with-zola/#the-bare-necessities" class="toc-link">The Bare Necessities</a>
+                        </li>
+                        
+                        <li>
+                            <a href="https://cbzehner.com/getting-started-with-zola/#choosing-a-theme" class="toc-link">Choosing a Theme</a>
+                        </li>
+                        
+                        <li>
+                            <a href="https://cbzehner.com/getting-started-with-zola/#make-a-post" class="toc-link">Make a Post</a>
+                        </li>
+                        
+                        <li>
+                            <a href="https://cbzehner.com/getting-started-with-zola/#copy-an-existing-site" class="toc-link">Copy an Existing Site</a>
+                        </li>
+                        
+                        <li>
+                            <a href="https://cbzehner.com/getting-started-with-zola/#deploy-to-github" class="toc-link">Deploy to GitHub</a>
+                        </li>
+                        
+                        <li>
+                            <a href="https://cbzehner.com/getting-started-with-zola/#finish-line" class="toc-link">Finish Line</a>
+                        </li>
+                        
+                    </ul>
+                    
+                </li>
+                
+            </ul>
+        </nav>
+    </div>
+</div>
+
+
+<article class="post">
+    
+    <header class="post__header">
+        <h1 class="post__title">
+            <a href="https:&#x2F;&#x2F;cbzehner.com&#x2F;getting-started-with-zola&#x2F;">Switching to Zola from Hakyll</a>
+        </h1>
+        <div class="post__meta">
+            <span class="post__time">2020-04-07</span>
+            
+        </div>
+    </header>
+
+    <div class="post-content">
+      <h1 id="time-for-a-change">Time for a Change</h1>
+<p>For the past few years, I've served my static site with <a href="https://pages.github.com/">GitHub pages</a> and generated the source with <a href="https://jaspervdj.be/hakyll">Hakyll</a>. Since it's time for a redesign, why not change the static generator as well?</p>
+<p>This post will walk through setting up a new Zola site with a pre-configured theme and deploying it via GitHub Pages, the same way my Hakyll site was deployed.</p>
+<p>The old design is a bit long-in-the-tooth.</p>
+<p><img src="./cbzehner_hakyll.png" alt="Hakyll generated site we'll be replacing" /></p>
+<p>The rest of this article will walk through the steps I used to create this site.</p>
+<h1 id="getting-started-with-zola">Getting Started with Zola</h1>
+<h2 id="the-bare-necessities">The Bare Necessities</h2>
+<p>First, <a href="https://www.getzola.org/documentation/getting-started/installation/">install Zola</a> on your local machine. I'm running <a href="https://elementary.io/">elementary OS</a> so I used the snap package <code>snap install --edge zola</code>. Now create a fresh Zola installation with <code>zola init &lt;website-name&gt;</code> and answer the basic questions, if you're not sure just hit <code>Enter</code> to take the default configuration option, it's easy to change later! If you're porting over an existing site, don't worry, we'll cover that once we get the basic structure set up.</p>
+<p>Before we go any further, let's ensure our project is set up correctly. Switch to the project directory with <code>cd &lt;website-name&gt;</code> and run <code>zola serve</code>. Navigate to the provided URL, I got <code>http://127.0.0.1:1111/</code> and you should see a <code>Welcome to Zola!</code> message asking you to set up an <code>index.html</code> file or install a theme.</p>
+<h2 id="choosing-a-theme">Choosing a Theme</h2>
+<p>We're going to install a theme, but you can <a href="https://www.getzola.org/documentation/getting-started/overview/">follow the Zola docs</a> to set up a custom site as well. There a couple <a href="https://www.getzola.org/themes/">different themes to choose from</a> and you <a href="https://github.com/search?q=zola+filename%3Atheme.toml&amp;type=Code">can find many more on GitHub</a>. For my personal website, I will be writing short tutorials and medium length blog posts. I choose <a href="https://github.com/getzola/even">Even</a>, a simple theme that doesn't distract from the content based on a Hugo theme of the same name.</p>
+<p>Now follow the <a href="https://github.com/getzola/even#installation">installation instructions from Even</a>. You should create a new file <code>content/_index.md</code> that matches the installation instructions and your <code>config.toml</code> should now look like:</p>
+<pre style="background-color:#272822;">
+<code><span style="color:#75715e;"># The URL the site will be built for
+</span><span style="color:#f92672;">base_url </span><span style="color:#f8f8f2;">= </span><span style="color:#e6db74;">&quot;https://example.com&quot;
+
+</span><span style="color:#75715e;"># --snip--
+
+</span><span style="color:#f92672;">theme </span><span style="color:#f8f8f2;">= </span><span style="color:#e6db74;">&quot;even&quot;
+
+</span><span style="color:#f92672;">taxonomies </span><span style="color:#f8f8f2;">= [
+  </span><span style="color:#75715e;"># You can enable/disable RSS
+  </span><span style="color:#f8f8f2;">{</span><span style="color:#f92672;">name </span><span style="color:#f8f8f2;">= </span><span style="color:#e6db74;">&quot;categories&quot;</span><span style="color:#f8f8f2;">, </span><span style="color:#f92672;">rss </span><span style="color:#f8f8f2;">= </span><span style="color:#ae81ff;">true</span><span style="color:#f8f8f2;">},
+  {</span><span style="color:#f92672;">name </span><span style="color:#f8f8f2;">= </span><span style="color:#e6db74;">&quot;tags&quot;</span><span style="color:#f8f8f2;">, </span><span style="color:#f92672;">rss </span><span style="color:#f8f8f2;">= </span><span style="color:#ae81ff;">true</span><span style="color:#f8f8f2;">},
+]
+
+[extra]
+</span><span style="color:#75715e;"># Put all your custom variables here
+
+# The site title show in the header
+</span><span style="color:#f92672;">even_title </span><span style="color:#f8f8f2;">= </span><span style="color:#e6db74;">&quot;Example Site&quot;
+
+</span><span style="color:#75715e;"># This is the default menu
+</span><span style="color:#f92672;">even_menu </span><span style="color:#f8f8f2;">= [
+    {</span><span style="color:#f92672;">url </span><span style="color:#f8f8f2;">= </span><span style="color:#e6db74;">&quot;$BASE_URL&quot;</span><span style="color:#f8f8f2;">, </span><span style="color:#f92672;">name </span><span style="color:#f8f8f2;">= </span><span style="color:#e6db74;">&quot;Home&quot;</span><span style="color:#f8f8f2;">},
+    {</span><span style="color:#f92672;">url </span><span style="color:#f8f8f2;">= </span><span style="color:#e6db74;">&quot;$BASE_URL/categories&quot;</span><span style="color:#f8f8f2;">, </span><span style="color:#f92672;">name </span><span style="color:#f8f8f2;">= </span><span style="color:#e6db74;">&quot;Categories&quot;</span><span style="color:#f8f8f2;">},
+    {</span><span style="color:#f92672;">url </span><span style="color:#f8f8f2;">= </span><span style="color:#e6db74;">&quot;$BASE_URL/tags&quot;</span><span style="color:#f8f8f2;">, </span><span style="color:#f92672;">name </span><span style="color:#f8f8f2;">= </span><span style="color:#e6db74;">&quot;Tags&quot;</span><span style="color:#f8f8f2;">},
+    {</span><span style="color:#f92672;">url </span><span style="color:#f8f8f2;">= </span><span style="color:#e6db74;">&quot;$BASE_URL/about&quot;</span><span style="color:#f8f8f2;">, </span><span style="color:#f92672;">name </span><span style="color:#f8f8f2;">= </span><span style="color:#e6db74;">&quot;About&quot;</span><span style="color:#f8f8f2;">},
+]
+</span></code></pre>
+<p>Now we've got our theme up and running! Try it out with <code>zola serve</code></p>
+<p><img src="./example_site_theme.png" alt="Example site with a working theme" /></p>
+<h2 id="make-a-post">Make a Post</h2>
+<p>Now all that's left is to share our work with the world! Let's update <code>content/first_post.md</code> to contain the following:</p>
+<pre style="background-color:#272822;">
+<code><span style="color:#f8f8f2;">+++
+title = &quot;My first post&quot;
+date = 1970-01-01
++++
+
+This is my first post.
+</span></code></pre>
+<p>Try <code>zola serve</code> one more time and you should see</p>
+<p><img src="./example_first_post.png" alt="Example site with a single post" /></p>
+<h2 id="copy-an-existing-site">Copy an Existing Site</h2>
+<p>If you have an existing static site that you want to preserve, one easy way of doing so is to keep it under version control. I checked out my old site from my git repository to a directory called <code>cbzehner_hakyll</code>.</p>
+<pre style="background-color:#272822;">
+<code><span style="color:#f8f8f2;">❯ exa</span><span style="font-style:italic;color:#fd971f;"> -T -L</span><span style="color:#f8f8f2;"> 2</span><span style="font-style:italic;color:#fd971f;"> -a
+</span><span style="color:#66d9ef;">.
+</span><span style="color:#f8f8f2;">├── cbzehner
+│  ├── config.toml
+│  ├── content
+│  ├── public
+│  ├── sass
+│  ├── static
+│  ├── templates
+│  └── themes
+├── cbzehner_hakyll
+│  ├── .git
+│  ├── .gitignore
+│  ├── cbzehner-github-io.cabal
+│  ├── docs
+│  ├── README.md
+│  ├── site.hs
+│  ├── src
+│  ├── stack.yaml
+│  └── stack.yaml.lock
+</span></code></pre>
+<p>Copy the <code>.git/</code> directory from the old repository to the current project with <code>copy -r ../cbzehner_hakyll .</code>. This will preserve the history of the previous static site inside this repository. Update the <code>.gitignore</code> file to exclude the <code>public/</code> directory where Zola places the build output:</p>
+<pre style="background-color:#272822;">
+<code><span style="color:#75715e;"># Exclude the build directory from version control
+</span><span style="color:#f8f8f2;">public/
+</span></code></pre>
+<p>Now we want to make sure we properly track our theme, which we added as a git submodule. Running <code>git add .</code> will generate a warning letting us know to run <code>git submodule add git@github.com:getzola/even.git themes/even </code> which tracks this module as a seperate repository.</p>
+<p>Now we need to move the content over from our previous static site generator to Zola. This may take a while, but I'll wait, I'm not in any rush...</p>
+<p>All done? Great! Finally, set up all our files to be tracked with <code>git add .</code> and then commit this using <code>git commit -m 'refactor: migrate to Zola'</code>!</p>
+<p>We're nearly done. Wouldn't it be nice if changes to our GitHub repository were automatically deployed to our website? That's next!</p>
+<h2 id="deploy-to-github">Deploy to GitHub</h2>
+<p>The last step now that we have our site up-and-running is to deploy it to <a href="https://guides.github.com/features/pages/">GitHub Pages</a> when we push a change to the <code>master</code> branch. I already have <a href="https://help.github.com/en/github/working-with-github-pages/about-custom-domains-and-github-pages">a custom domain</a> set up. So all I need to do is copy my previous <code>CNAME</code> file into <code>static/CNAME</code> so that Zola picks it up at build-time.</p>
+<p>We will deploy our changes with GitHub Actions, the <a href="https://github.com/marketplace/actions/zola-deploy-to-pages">Zola Deploy to Pages</a> action will check out the newly changed master branch and build Zola on a <code>gh-pages</code> branch. To set this up we'll need to add GitHub Actions to our repository and set a private access token for the action to use.</p>
+<p>To run this GitHub Action we first need to create a new directory with <code>mkdir -p .github/workflows</code>. The <code>workflows/</code> directory stores all <a href="https://help.github.com/en/actions/configuring-and-managing-workflows/configuring-a-workflow">GitHub Workflows</a>. Inside this directory create a new file <code>deploy.yml</code> which configures the action.</p>
+<pre style="background-color:#272822;">
+<code><span style="color:#f92672;">name</span><span style="color:#f8f8f2;">: </span><span style="color:#f92672;">Deploy static site
+</span><span style="color:#ae81ff;">on</span><span style="color:#f8f8f2;">: </span><span style="color:#f92672;">push
+jobs</span><span style="color:#f8f8f2;">:
+  </span><span style="color:#f92672;">build</span><span style="color:#f8f8f2;">:
+    </span><span style="color:#f92672;">name</span><span style="color:#f8f8f2;">: </span><span style="color:#f92672;">Build site with Zola and deploy
+    runs-on</span><span style="color:#f8f8f2;">: </span><span style="color:#f92672;">ubuntu-latest
+    steps</span><span style="color:#f8f8f2;">:
+    - </span><span style="color:#f92672;">uses</span><span style="color:#f8f8f2;">: </span><span style="color:#f92672;">actions/checkout@master
+    </span><span style="color:#f8f8f2;">- </span><span style="color:#f92672;">name</span><span style="color:#f8f8f2;">: </span><span style="color:#f92672;">Zola Deploy Action by @shalzz
+      uses</span><span style="color:#f8f8f2;">: </span><span style="color:#f92672;">shalzz/zola-deploy-action@master
+      env</span><span style="color:#f8f8f2;">:
+        </span><span style="color:#f92672;">PAGES_BRANCH</span><span style="color:#f8f8f2;">: </span><span style="color:#f92672;">gh-pages
+        TOKEN</span><span style="color:#f8f8f2;">: </span><span style="color:#e6db74;">${{ secrets.TOKEN }}
+</span></code></pre>
+<p>We're not quite ready to run it yet, we need to <a href="https://github.com/marketplace/actions/zola-deploy-to-pages#secrets">set up a personal access token</a> for &quot;Zola Deploy to Pages&quot; to use.</p>
+<p>Since this repository is public I can create an <a href="https://github.com/settings/tokens/new">access token</a> with the <code>public_repo</code> scope. If the repository is private, you may need the full <code>repo</code> scope, which differs from this screenshot.</p>
+<p><img src="./generate_token.png" alt="Generate a personal access token with public_repo scope" /></p>
+<p>Now take the generated token and add it to your repo under <code>/settings/secrets/new</code> as <code>TOKEN</code> so it matches the configuration in the <code>deploy.yml</code> file.</p>
+<p><img src="./generate_token.png" alt="Add TOKEN secret to repository settings" /></p>
+<p>With all of this done we can push these changes up to GitHub. After this lands, the next changes we make will automatically deploy our code to the <code>gh-pages</code> branch. Once that happens, we need to go into our repository settings and change the &quot;Source&quot; for &quot;GitHub Pages&quot; to be <code>gh-pages branch</code>.</p>
+<h2 id="finish-line">Finish Line</h2>
+<p>🎉 That's everything! Your site is built with Zola and deployed via GitHub Actions &amp; GitHub Pages. Go check it out!</p>
+
+    </div>
+
+    
+    
+
+    <div class="post-footer">
+        
+            
+                <div class="post-tags">
+                    
+                        <a href="https:&#x2F;&#x2F;cbzehner.com&#x2F;tags&#x2F;rust&#x2F;">#rust</a>
+                    
+                        <a href="https:&#x2F;&#x2F;cbzehner.com&#x2F;tags&#x2F;web&#x2F;">#web</a>
+                    
+                </div>
+            
+            
+                <div class="post-nav">
+                    
+                    
+                        <a class="next" href="https:&#x2F;&#x2F;cbzehner.com&#x2F;introducing-stress&#x2F;">Introducing stress ›</a>
+                    
+                    
+                    
+                </div>
+            
+
+        
+
+    </div>
+
+    
+    
+</article>
+
+
+                </div>
+            </main>
+
+            
+            
+        </div>
+
+      
+          <script type="text/javascript" src="https:&#x2F;&#x2F;cbzehner.com&#x2F;even.js" ></script>
+      
+    </body>
+
+</html>

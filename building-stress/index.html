@@ -1,0 +1,565 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+      <!-- Enable responsiveness on mobile devices-->
+      <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+
+      <title>Chris Zehner - Building stress</title>
+
+      
+
+      
+          <script src="https://cdnjs.cloudflare.com/ajax/libs/slideout/1.0.1/slideout.min.js"></script>
+          
+      
+
+      
+          <link rel="stylesheet" href="https:&#x2F;&#x2F;cbzehner.com&#x2F;site.css">
+          
+      
+
+      
+      
+    </head>
+
+    <body>
+        <div class="container">
+
+            <div id="mobile-navbar" class="mobile-navbar">
+              <div class="mobile-header-logo">
+                <a href="/" class="logo"></a>
+              </div>
+              <div class="mobile-navbar-icon icon-out">
+                <span></span>
+                <span></span>
+                <span></span>
+              </div>
+            </div>
+
+            <nav id="mobile-menu" class="mobile-menu slideout-menu slideout-menu-left">
+              <ul class="mobile-menu-list">
+                
+                    <li class="mobile-menu-item">
+                        <a href="&#x2F;">
+                            Thoughts
+                        </a>
+                    </li>
+                
+                    <li class="mobile-menu-item">
+                        <a href="https:&#x2F;&#x2F;github.com&#x2F;cbzehner">
+                            Code
+                        </a>
+                    </li>
+                
+                    <li class="mobile-menu-item">
+                        <a href="&#x2F;about">
+                            About
+                        </a>
+                    </li>
+                
+              </ul>
+            </nav>
+
+            <header id="header">
+                <div class="logo"><a href="https:&#x2F;&#x2F;cbzehner.com"></a></div>
+                <nav class="menu">
+                    <ul>
+                        
+                            <li>
+                                <a href="&#x2F;">
+                                    Thoughts
+                                </a>
+                            </li>
+                        
+                            <li>
+                                <a href="https:&#x2F;&#x2F;github.com&#x2F;cbzehner">
+                                    Code
+                                </a>
+                            </li>
+                        
+                            <li>
+                                <a href="&#x2F;about">
+                                    About
+                                </a>
+                            </li>
+                        
+                    </ul>
+                </nav>
+            </header>
+
+            <main>
+                <div class="content" id="mobile-panel">
+                    
+
+
+<div class="post-toc" id="post-toc">
+    <h2 class="post-toc-title">Contents</h2>
+    <div class="post-toc-content always-active">
+        <nav id="TableOfContents">
+            <ul>
+                
+                <li>
+                    <a href="https://cbzehner.com/building-stress/#a-simple-command-line-tool-in-rust" class="toc-link">A simple command-line tool in Rust</a>
+                    
+                    <ul>
+                        
+                        <li>
+                            <a href="https://cbzehner.com/building-stress/#what-are-we-building" class="toc-link">What are we building?</a>
+                        </li>
+                        
+                    </ul>
+                    
+                </li>
+                
+                <li>
+                    <a href="https://cbzehner.com/building-stress/#what-is-an-error" class="toc-link">What is an error?</a>
+                    
+                </li>
+                
+                <li>
+                    <a href="https://cbzehner.com/building-stress/#setup" class="toc-link">Setup</a>
+                    
+                    <ul>
+                        
+                        <li>
+                            <a href="https://cbzehner.com/building-stress/#install-rust" class="toc-link">Install Rust</a>
+                        </li>
+                        
+                        <li>
+                            <a href="https://cbzehner.com/building-stress/#create-our-project" class="toc-link">Create our project</a>
+                        </li>
+                        
+                    </ul>
+                    
+                </li>
+                
+                <li>
+                    <a href="https://cbzehner.com/building-stress/#reading-exit-codes-in-a-loop" class="toc-link">Reading exit codes in a loop</a>
+                    
+                </li>
+                
+                <li>
+                    <a href="https://cbzehner.com/building-stress/#adding-configuration" class="toc-link">Adding configuration</a>
+                    
+                </li>
+                
+                <li>
+                    <a href="https://cbzehner.com/building-stress/#user-centric-design" class="toc-link">User-centric Design</a>
+                    
+                    <ul>
+                        
+                        <li>
+                            <a href="https://cbzehner.com/building-stress/#of-commands-and-lines" class="toc-link">Of commands and lines</a>
+                        </li>
+                        
+                    </ul>
+                    
+                </li>
+                
+                <li>
+                    <a href="https://cbzehner.com/building-stress/#providing-structure" class="toc-link">Providing Structure</a>
+                    
+                </li>
+                
+                <li>
+                    <a href="https://cbzehner.com/building-stress/#help" class="toc-link">Help!</a>
+                    
+                </li>
+                
+                <li>
+                    <a href="https://cbzehner.com/building-stress/#putting-it-all-together" class="toc-link">Putting it all together</a>
+                    
+                    <ul>
+                        
+                        <li>
+                            <a href="https://cbzehner.com/building-stress/#altering-the-number-of-runs" class="toc-link">Altering the number of runs</a>
+                        </li>
+                        
+                        <li>
+                            <a href="https://cbzehner.com/building-stress/#accepting-a-command" class="toc-link">Accepting a command</a>
+                        </li>
+                        
+                    </ul>
+                    
+                </li>
+                
+                <li>
+                    <a href="https://cbzehner.com/building-stress/#what-comes-next" class="toc-link">What comes next?</a>
+                    
+                </li>
+                
+                <li>
+                    <a href="https://cbzehner.com/building-stress/#areas-of-further-improvement" class="toc-link">Areas of further improvement</a>
+                    
+                    <ul>
+                        
+                        <li>
+                            <a href="https://cbzehner.com/building-stress/#footnotes" class="toc-link">Footnotes</a>
+                        </li>
+                        
+                    </ul>
+                    
+                </li>
+                
+            </ul>
+        </nav>
+    </div>
+</div>
+
+
+<article class="post">
+    
+    <header class="post__header">
+        <h1 class="post__title">
+            <a href="https:&#x2F;&#x2F;cbzehner.com&#x2F;building-stress&#x2F;">Building stress</a>
+        </h1>
+        <div class="post__meta">
+            <span class="post__time">2020-06-28</span>
+            
+        </div>
+    </header>
+
+    <div class="post-content">
+      <h1 id="a-simple-command-line-tool-in-rust">A simple command-line tool in Rust</h1>
+<p>I previously <a href="https://www.cbzehner.com/introducing-stress/">introduced the <code>stress</code> utility</a>, a simple way to run a command and detect failures.</p>
+<p>Today we're going to build it together!</p>
+<p>Despite the name, this should be a relaxing tour through the world of command-line programming. If you're stuck at any point, reach out by <a href="https://github.com/cbzehner/cbzehner/issues">opening an issue</a> and I'll do my best to help you figure it out.</p>
+<h2 id="what-are-we-building">What are we building?</h2>
+<p>We're going to build a binary program in <a href="https://www.rust-lang.org/">Rust</a> which takes in a command and runs it a set number of times. Afterwards, we'll provide some insight about runs!</p>
+<p>We'll build a working version, then do a couple refactors to make it all more maintainable.</p>
+<h1 id="what-is-an-error">What is an error?</h1>
+<p>We'll rely on <a href="https://en.wikipedia.org/w/index.php?title=Exit_code">exit codes</a>, numbers returned by commands when they finish running, to determine whether a command failed. By convention <code>0</code> indicates success and any non-zero values between <code>1</code> and <code>255</code> indicate failure. <a href="https://www.gnu.org/software/libc/manual/html_node/Error-Codes.html#index-ENOBUFS-117">Operating</a> <a href="https://www.freebsd.org/cgi/man.cgi?query=errno&amp;apropos=0&amp;sektion=0&amp;manpath=FreeBSD+12.1-RELEASE&amp;arch=default&amp;format=html">systems</a> provide definitions for the failure codes, but rely on convention to enforce usage.</p>
+<p>For our purposes, we'll assume that all commands are using exit codes correctly.<sup><a href="https://cbzehner.com/building-stress/#correct-exit-codes">1</a></sup> That means we can simply run the command and check its exit code to see whether it succeeded or failed!</p>
+<p>Relying on a standard like exit codes allows our program to work with commands in any programming language as long as that command follows the exit code convention.<sup><a href="https://cbzehner.com/building-stress/#incorrect-usage">2</a></sup></p>
+<h1 id="setup">Setup</h1>
+<h2 id="install-rust">Install Rust</h2>
+<p>If you haven't already, <a href="https://www.rust-lang.org/tools/install">install Rust</a> and confirm you have a working installation by running <code>rustc --version</code>.</p>
+<h2 id="create-our-project">Create our project</h2>
+<p>Rust comes with a <a href="https://doc.rust-lang.org/cargo/">package manager <code>cargo</code></a>. We're going to use cargo to create a new project with the binary (<code>--bin</code>) flag because this program is a executable, where users directly run the final binary, rather than a library, which other programmers embed into their applications.</p>
+<p>Navigate to the directory where you want to keep this program, then run <code>cargo new stress-tutorial --bin</code>. This will create a new folder <code>stress-tutorial/</code> which we can navigate to with <code>cd stress-tutorial</code>.</p>
+<p>Now that we have access to our project, we can use three different cargo commands:</p>
+<ol>
+<li>
+<p><code>cargo check</code> will run Rust typechecking, running the compiler without generating the final code. Give it a try!</p>
+<p>You should see <code>Finished dev [unoptimized + debuginfo] target(s) in 0.00s</code> not very exciting...</p>
+</li>
+<li>
+<p><code>cargo build</code> will do everything <code>cargo check</code> does as well as saving the code to the <code>target/</code> folder.</p>
+<p>Run <code>cargo build</code>, then <code>./target/debug/stress-tutorial</code> to run your program and you'll see <code>Hello, world!</code>!</p>
+</li>
+<li>
+<p><code>cargo run</code> combines the build step above with the manual step of running the output -- <code>cargo</code> runs both <code>build</code> and j<code>./target/debug/stress-tutorial</code> for us!</p>
+<p>Try it out! You'll see <code>Hello, world!</code> once again!</p>
+</li>
+</ol>
+<h1 id="reading-exit-codes-in-a-loop">Reading exit codes in a loop</h1>
+<p>We'll start out by running a hardcoded command and printing a message based on its exit code!</p>
+<p>In our <code>main.rs</code> file we're going to add <code>use std::process::Command</code> (<a href="https://doc.rust-lang.org/std/process/struct.Command.html">docs</a>) to the top of the file so we can use this library in our code. We'll use <code>Command</code> to run a shell command <code>sh -c exit 0</code> which immediately quits the command with an exit code of <code>0</code>.</p>
+<p>Let's create a new command and set it to a variable named <code>output</code>. In order to execute the command, we need to call <a href="https://doc.rust-lang.org/std/process/struct.Command.html#method.output"><code>output()</code></a>, but this only gives us a <code>Result&lt;Output&gt;</code>. We get a <code>Result</code> back because the command we call might fail. For now, let's just chain an <code>unwrap()</code> (<a href="https://doc.rust-lang.org/core/result/enum.Result.html#method.unwrap">docs</a>) call onto our <code>Command</code>. This will panic if the value isn't <code>Some(&lt;value&gt;)</code>, crashing our program. 😬</p>
+<pre style="background-color:#272822;">
+<code><span style="font-style:italic;color:#66d9ef;">let</span><span style="color:#f8f8f2;"> output </span><span style="color:#f92672;">= </span><span style="color:#f8f8f2;">Command::new(</span><span style="color:#e6db74;">&quot;sh&quot;</span><span style="color:#f8f8f2;">)
+            .</span><span style="color:#66d9ef;">arg</span><span style="color:#f8f8f2;">(</span><span style="color:#e6db74;">&quot;-c&quot;</span><span style="color:#f8f8f2;">)
+            .</span><span style="color:#66d9ef;">arg</span><span style="color:#f8f8f2;">(format!(</span><span style="color:#e6db74;">&quot;exit </span><span style="color:#ae81ff;">{}</span><span style="color:#e6db74;">&quot;</span><span style="color:#f8f8f2;">, </span><span style="color:#ae81ff;">0</span><span style="color:#f8f8f2;">))
+            .</span><span style="color:#66d9ef;">output</span><span style="color:#f8f8f2;">()
+            .</span><span style="color:#66d9ef;">unwrap</span><span style="color:#f8f8f2;">();
+</span></code></pre>
+<p>Now we can inspect the <code>output</code> of our command <code>sh -c exit 0</code> to see whether it was successful or not.</p>
+<pre style="background-color:#272822;">
+<code><span style="color:#f92672;">match</span><span style="color:#f8f8f2;"> output.status.</span><span style="color:#66d9ef;">code</span><span style="color:#f8f8f2;">() {
+    </span><span style="font-style:italic;color:#66d9ef;">Some</span><span style="color:#f8f8f2;">(</span><span style="color:#ae81ff;">0</span><span style="color:#f8f8f2;">) </span><span style="color:#f92672;">=&gt; </span><span style="color:#f8f8f2;">println!(</span><span style="color:#e6db74;">&quot;Success&quot;</span><span style="color:#f8f8f2;">),
+    </span><span style="color:#f92672;">_ =&gt; </span><span style="color:#f8f8f2;">println!(</span><span style="color:#e6db74;">&quot;Failure&quot;</span><span style="color:#f8f8f2;">),
+}
+</span></code></pre>
+<p>This will print out &quot;Success&quot; if our command had an exit code code of <code>0</code> and &quot;Failure&quot; in any other case.</p>
+<p>Try <code>cargo run</code>, you should see a single &quot;Success&quot; message in the console.</p>
+<p>However, this isn't enough, our original goal was to automate running the command multiple times. Let's make the computer do this for us!</p>
+<p>Let's wrap a loop around the code we just wrote.</p>
+<pre style="background-color:#272822;">
+<code><span style="color:#f92672;">for _ in </span><span style="color:#ae81ff;">0</span><span style="color:#f92672;">..</span><span style="color:#ae81ff;">10 </span><span style="color:#f8f8f2;">{
+    </span><span style="color:#f92672;">... </span><span style="color:#75715e;">// Your code goes here.
+</span><span style="color:#f8f8f2;">}
+</span></code></pre>
+<p>Now your <code>main.rs</code> file should look like</p>
+<pre style="background-color:#272822;">
+<code><span style="color:#f92672;">use </span><span style="color:#f8f8f2;">std::process::Command;
+
+</span><span style="font-style:italic;color:#66d9ef;">fn </span><span style="color:#a6e22e;">main</span><span style="color:#f8f8f2;">() {
+    </span><span style="color:#f92672;">for _ in </span><span style="color:#ae81ff;">0</span><span style="color:#f92672;">..</span><span style="color:#ae81ff;">10 </span><span style="color:#f8f8f2;">{
+        </span><span style="font-style:italic;color:#66d9ef;">let</span><span style="color:#f8f8f2;"> output </span><span style="color:#f92672;">= </span><span style="color:#f8f8f2;">Command::new(</span><span style="color:#e6db74;">&quot;sh&quot;</span><span style="color:#f8f8f2;">)
+            .</span><span style="color:#66d9ef;">arg</span><span style="color:#f8f8f2;">(</span><span style="color:#e6db74;">&quot;-c&quot;</span><span style="color:#f8f8f2;">)
+            .</span><span style="color:#66d9ef;">arg</span><span style="color:#f8f8f2;">(format!(</span><span style="color:#e6db74;">&quot;exit </span><span style="color:#ae81ff;">{}</span><span style="color:#e6db74;">&quot;</span><span style="color:#f8f8f2;">, </span><span style="color:#ae81ff;">0</span><span style="color:#f8f8f2;">))
+            .</span><span style="color:#66d9ef;">output</span><span style="color:#f8f8f2;">()
+            .</span><span style="color:#66d9ef;">unwrap</span><span style="color:#f8f8f2;">();
+        </span><span style="color:#f92672;">match</span><span style="color:#f8f8f2;"> output.status.</span><span style="color:#66d9ef;">code</span><span style="color:#f8f8f2;">() {
+            </span><span style="font-style:italic;color:#66d9ef;">Some</span><span style="color:#f8f8f2;">(</span><span style="color:#ae81ff;">0</span><span style="color:#f8f8f2;">) </span><span style="color:#f92672;">=&gt; </span><span style="color:#f8f8f2;">println!(</span><span style="color:#e6db74;">&quot;Success&quot;</span><span style="color:#f8f8f2;">),
+            </span><span style="color:#f92672;">_ =&gt; </span><span style="color:#f8f8f2;">println!(</span><span style="color:#e6db74;">&quot;Failure&quot;</span><span style="color:#f8f8f2;">),
+        }
+    }
+}
+</span></code></pre>
+<p>Try it out! What happens if you change the exit code from <code>0</code> to another number?</p>
+<h1 id="adding-configuration">Adding configuration</h1>
+<p>Hardcoding various exit codes isn't very exciting though. Let's live dangerously and let our users decide what command to run!</p>
+<p>That means we need to read command-line arguments. Luckily, the Rust ecosystem already has a great command-line argument parser (C.L.A.P.) named...you guessed it, <code>clap</code>!</p>
+<p>However, using <code>clap</code> (<a href="https://clap.rs/">link</a>) requires building the a <code>clap::App</code> struct, which can get pretty verbose. We're instead going to take advantage of another crate <code>structopt</code> (<a href="https://github.com/TeXitoi/structopt">link</a>), which derives the command-line arguments and parses them based on Rust structs that we define.</p>
+<h1 id="user-centric-design">User-centric Design</h1>
+<p>It's time to take a step back and think about how we want users to interact with our program. Good rules of thumb are</p>
+<ol>
+<li>It should be easy to accomplish the goal</li>
+<li>Obvious things should be possible</li>
+<li>As little as possible should be necessary</li>
+</ol>
+<p>In this case, the goal of the program is to run a command a lot of times and see if it fails.</p>
+<p>...but what is a lot? Once? Definitely not! What about 10 times? 1337 times? It's not clear.</p>
+<p>This is a good sign that &quot;a lot&quot; should be something we allow users to configure, per rule #2. But we should not require it to be configured (rule #3).</p>
+<p>Let's set a default value of 10. This is small enough that if a users program runs slooowly it shouldn't cause much inconvenience. If we set a value of 1,000, a slow-running program might be quite annoying. We expect most users will tweak this setting to match their specific needs, but we can try to be helpful before we meet them!</p>
+<p>And of course we want to actually pass in a command to run!</p>
+<p>Something like <code>stress-tutorial --runs 300 yarn jest --test path/to/my/test</code></p>
+<ul>
+<li><code>stress-tutorial</code> is the name of our program, we'll be calling this <code>cargo run</code> for the most part during development</li>
+<li><code>--runs 300</code> allows the user to specify the number of times to run the program. This should be strictly optional</li>
+<li><code>yarn jest --test path/to/my/test</code> is the actual command the user wants to run.</li>
+</ul>
+<h4 id="of-commands-and-lines">Of commands and lines</h4>
+<p>Due to the fact that our program is taking in an arbitrary command we're going to have problems with the program thinking that <code>--test</code> (from our example above) is being passed to our program, rather than an argument passed to <code>yarn jest</code>. To avoid this we can place a <code>--</code> before our main command.</p>
+<blockquote>
+<p>There is a special command line argument which is two hyphens --, and when this is used, special command line handling is disabled from that point onwards, which means all subsequent arguments are considered part of a task description:</p>
+<p>- <a href="https://taskwarrior.org/docs/escapes.html">Escaping Command Line Characters
+</a></p>
+</blockquote>
+<h1 id="providing-structure">Providing Structure</h1>
+<p>In order to do this we need to add the <code>structopt</code> crate to our <code>Cargo.toml</code> file.</p>
+<pre style="background-color:#272822;">
+<code><span style="color:#f8f8f2;">[package]
+name = &quot;stress-tutorial&quot;
+version = &quot;0.1.0&quot;
+authors = [&quot;Chris Zehner &lt;cbzehner@commure.com&gt;&quot;]
+edition = &quot;2018&quot;
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
++structopt = &quot;0.3.15&quot;
+</span></code></pre>
+<p>Now we can import the crate into our <code>main.rs</code></p>
+<pre style="background-color:#272822;">
+<code><span style="color:#f8f8f2;">use std::process::Command;
++ use structopt::StructOpt;
+</span></code></pre>
+<p>Awesome! We're ready to add a new struct above our <code>main</code> method</p>
+<pre style="background-color:#272822;">
+<code><span style="color:#75715e;">/// Put your programs to the test. Run a command in a loop and collect failures.
+</span><span style="color:#f8f8f2;">#[derive(StructOpt)]
+</span><span style="font-style:italic;color:#66d9ef;">struct </span><span style="color:#f8f8f2;">Cli {
+    #[structopt(required </span><span style="color:#f92672;">=</span><span style="color:#f8f8f2;"> true, min_values </span><span style="color:#f92672;">=</span><span style="color:#f8f8f2;"> 1, verbatim_doc_comment)]
+    </span><span style="color:#75715e;">/// The command to run. Precede this command with -- in order to pass in flags.
+    /// Usage:
+    ///   stress --runs 10 -- echo &quot;hello world&quot;
+    ///   stress -- ls -a
+    </span><span style="color:#f8f8f2;">cmd: </span><span style="font-style:italic;color:#66d9ef;">Vec</span><span style="color:#f8f8f2;">&lt;</span><span style="font-style:italic;color:#66d9ef;">String</span><span style="color:#f8f8f2;">&gt;,
+    </span><span style="color:#75715e;">/// The number of times to run the command
+    </span><span style="color:#f8f8f2;">#[structopt(short, long, default_value </span><span style="color:#f92672;">= </span><span style="color:#e6db74;">&quot;10&quot;</span><span style="color:#f8f8f2;">)]
+    runs: </span><span style="font-style:italic;color:#66d9ef;">i8</span><span style="color:#f8f8f2;">,
+}
+</span></code></pre>
+<p>Let's break this down line-by-line.</p>
+<pre style="background-color:#272822;">
+<code><span style="color:#75715e;">/// Put your programs to the test. Run a command in a loop and collect failures.
+</span></code></pre>
+<p>This is a doc-comment. Rust will include these in the automatically generated documentation. <code>structopt</code> additionally includes this in our command-line utility when passed <code>--help</code>!</p>
+<pre style="background-color:#272822;">
+<code><span style="color:#f8f8f2;">#[derive(StructOpt)]
+</span></code></pre>
+<p>Tell Rust that it should automatically generate code for the <code>Cli</code> struct using the <code>structopt</code> crate.</p>
+<pre style="background-color:#272822;">
+<code><span style="font-style:italic;color:#66d9ef;">struct </span><span style="color:#f8f8f2;">Cli {
+    </span><span style="color:#75715e;">// --snip--
+</span><span style="color:#f8f8f2;">}
+</span></code></pre>
+<p>Define a new Rust struct, <code>Cli</code>, short for command-line interface, which is what we're deriving after all!</p>
+<pre style="background-color:#272822;">
+<code><span style="color:#f8f8f2;">    #[structopt(required </span><span style="color:#f92672;">=</span><span style="color:#f8f8f2;"> true, min_values </span><span style="color:#f92672;">=</span><span style="color:#f8f8f2;"> 1, verbatim_doc_comment)]
+    </span><span style="color:#75715e;">/// The command to run. Precede this command with -- in order to pass in flags.
+    /// Usage:
+    ///   stress --runs 10 -- echo &quot;hello world&quot;
+    ///   stress -- ls -a
+</span><span style="color:#f8f8f2;">    cmd: </span><span style="font-style:italic;color:#66d9ef;">Vec</span><span style="color:#f8f8f2;">&lt;</span><span style="font-style:italic;color:#66d9ef;">String</span><span style="color:#f8f8f2;">&gt;,
+</span></code></pre>
+<p>Tell <code>#[structopt]</code> that this command is <code>required</code>, must have at least one value in the <code>Vec&lt;String&gt;</code> and to not alter the format of the doc-comment when parsing it.</p>
+<p>The argument passed into our program will be a series of strings seperated by spaces. We could also have structured this as <code>cmd: String</code> but because the <code>std::process::Command</code> takes a command to execute and it's arguments as seperate pieces using the <code>Vect&lt;String&gt;</code> structure allows us to rely on <code>structopt</code> to split the components out based on space-separators.</p>
+<pre style="background-color:#272822;">
+<code><span style="color:#f8f8f2;">    </span><span style="color:#75715e;">/// The number of times to run the command
+    </span><span style="color:#f8f8f2;">#[structopt(short, long, default_value </span><span style="color:#f92672;">= </span><span style="color:#e6db74;">&quot;10&quot;</span><span style="color:#f8f8f2;">)]
+    runs: </span><span style="font-style:italic;color:#66d9ef;">i8</span><span style="color:#f8f8f2;">,
+</span></code></pre>
+<p>Finally, allow users to specify the number of runs they want to observe. We specific <code>#[structopt(..)]</code> again to have it generate some additional things.</p>
+<ul>
+<li><code>short</code> adds a <code>-r</code> argument to our program based on the name <code>runs</code></li>
+<li><code>long</code> adds a <code>--runs</code> argument to our program, again based on the name of the field</li>
+<li><code>default_value</code> does what it implies and allows us to omit the <code>--runs</code> flag</li>
+</ul>
+<h1 id="help">Help!</h1>
+<p>If you try running <code>cargo run -- --help</code>, nothing happens? That's because we haven't actually used our <code>Cli</code> anywhere!</p>
+<p>Add this to the very first line of the <code>main</code> method in <code>main.rs</code>:</p>
+<pre style="background-color:#272822;">
+<code><span style="color:#f8f8f2;">fn main() {
++    let args = Cli::from_args();
+    // --snip--
+}
+</span></code></pre>
+<p>and rerun the command above to see</p>
+<pre style="background-color:#272822;">
+<code><span style="color:#f8f8f2;">stress-tutorial 0.1.0
+Put your programs to the test. Run a command in a loop and collect failures
+
+USAGE:
+    stress-tutorial </span><span style="color:#f92672;">[</span><span style="color:#f8f8f2;">OPTIONS</span><span style="color:#f92672;">] &lt;</span><span style="color:#f8f8f2;">cmd</span><span style="color:#f92672;">&gt;</span><span style="color:#f8f8f2;">...
+
+FLAGS:
+    -h,</span><span style="font-style:italic;color:#fd971f;"> --help</span><span style="color:#f8f8f2;">       Prints help information
+    -V,</span><span style="font-style:italic;color:#fd971f;"> --version</span><span style="color:#f8f8f2;">    Prints version information
+
+OPTIONS:
+    -r,</span><span style="font-style:italic;color:#fd971f;"> --runs </span><span style="color:#f92672;">&lt;</span><span style="color:#f8f8f2;">runs</span><span style="color:#f92672;">&gt;</span><span style="color:#f8f8f2;">    The number of times to run the command </span><span style="color:#f92672;">[</span><span style="color:#f8f8f2;">default: 10</span><span style="color:#f92672;">]
+
+</span><span style="color:#f8f8f2;">ARGS:
+    </span><span style="color:#f92672;">&lt;</span><span style="color:#f8f8f2;">cmd</span><span style="color:#f92672;">&gt;</span><span style="color:#f8f8f2;">...    The command to run. Precede this command with</span><span style="color:#f92672;"> --</span><span style="color:#f8f8f2;"> in order to pass in flags.
+                Usage:
+                  stress</span><span style="font-style:italic;color:#fd971f;"> --runs</span><span style="color:#f8f8f2;"> 10</span><span style="color:#f92672;"> --</span><span style="color:#f8f8f2;"> echo </span><span style="color:#e6db74;">&quot;hello world&quot;
+                  </span><span style="color:#f8f8f2;">stress</span><span style="color:#f92672;"> --</span><span style="color:#f8f8f2;"> ls -a
+</span></code></pre>
+<p>It looks good, but if you try passing in any of the arguments, they are ignore in favor of the hardcoded <code>exit 0</code> and <code>10</code> runs we specified earlier.</p>
+<h1 id="putting-it-all-together">Putting it all together</h1>
+<h2 id="altering-the-number-of-runs">Altering the number of runs</h2>
+<p>Start by changing our program to respect the <code>--runs</code> parameter. It's easier than you expect!</p>
+<pre style="background-color:#272822;">
+<code><span style="color:#f8f8f2;">fn main() {
+    let args = Cli::from_args();
++    let runs = args.runs;
+
++    for _ in 0..10 {
+-    for _ in 0..runs {
+        // --snip--
+    }
+}
+</span></code></pre>
+<p>Awesome! Let's run <code>cargo run -- --runs 1</code> to see it in action!</p>
+<p>Wait, what!?!</p>
+<pre style="background-color:#272822;">
+<code><span style="color:#f8f8f2;">error: The following required arguments were not provided:
+    </span><span style="color:#f92672;">&lt;</span><span style="color:#f8f8f2;">cmd</span><span style="color:#f92672;">&gt;</span><span style="color:#f8f8f2;">...
+
+USAGE:
+    stress-tutorial </span><span style="color:#f92672;">&lt;</span><span style="color:#f8f8f2;">cmd</span><span style="color:#f92672;">&gt;</span><span style="color:#f8f8f2;">...</span><span style="font-style:italic;color:#fd971f;"> --runs </span><span style="color:#f92672;">&lt;</span><span style="color:#f8f8f2;">runs</span><span style="color:#f92672;">&gt;</span><span style="color:#f8f8f2;">
+
+For more information try</span><span style="font-style:italic;color:#fd971f;"> --help
+</span></code></pre>
+<p>Remember that we made the <code>&lt;cmd&gt;</code> our program will run required? We haven't implemented it yet. Let's comment it out for a second here while we test our <code>--runs</code> flag.</p>
+<pre style="background-color:#272822;">
+<code><span style="color:#f8f8f2;">struct Cli {
++    // #[structopt(required = true, min_values = 1, verbatim_doc_comment)]
+-    #[structopt(required = true, min_values = 1, verbatim_doc_comment)]
+    // --snip--
+}
+</span></code></pre>
+<p>And it's working! When I run <code>cargo run -- --runs 1</code> I see only a single <code>Success</code> printed to my console.</p>
+<p>Quickly now, undo our commented out line from <code>Cli</code> above. We're going to need that in just a second.</p>
+<h2 id="accepting-a-command">Accepting a command</h2>
+<p>To parse out the command passed into our program, we need to split it into two parts, the base command to run and the arguments we want to pass into the command. To do this we'll add the following lines directly below <code>let runs = ...</code>:</p>
+<pre style="background-color:#272822;">
+<code><span style="font-style:italic;color:#66d9ef;">let</span><span style="color:#f8f8f2;"> command: </span><span style="color:#f92672;">&amp;</span><span style="font-style:italic;color:#66d9ef;">str </span><span style="color:#f92672;">= &amp;</span><span style="color:#f8f8f2;">args.cmd[</span><span style="color:#ae81ff;">0</span><span style="color:#f8f8f2;">];
+</span><span style="font-style:italic;color:#66d9ef;">let</span><span style="color:#f8f8f2;"> arguments: </span><span style="font-style:italic;color:#66d9ef;">Vec</span><span style="color:#f8f8f2;">&lt;</span><span style="font-style:italic;color:#66d9ef;">String</span><span style="color:#f8f8f2;">&gt; </span><span style="color:#f92672;">= </span><span style="font-style:italic;color:#66d9ef;">Vec</span><span style="color:#f8f8f2;">::from(</span><span style="color:#f92672;">&amp;</span><span style="color:#f8f8f2;">args.cmd[</span><span style="color:#ae81ff;">1</span><span style="color:#f92672;">..</span><span style="color:#f8f8f2;">args.cmd.</span><span style="color:#66d9ef;">len</span><span style="color:#f8f8f2;">()]);
+</span></code></pre>
+<p>This takes the first element of our <code>cmd</code> and sets it as our base command. Remember we used <code>#[structopt(...)]</code> to require at least one value here? That's how we know accessing the zeroth element will be safe!</p>
+<p>Then we take everything else from <code>cmd</code> and use it as the arguments.</p>
+<p>Update <code>output</code> to use these newly created variables:</p>
+<pre style="background-color:#272822;">
+<code><span style="font-style:italic;color:#66d9ef;">let</span><span style="color:#f8f8f2;"> output </span><span style="color:#f92672;">= </span><span style="color:#f8f8f2;">Command::new(command).</span><span style="color:#66d9ef;">args</span><span style="color:#f8f8f2;">(</span><span style="color:#f92672;">&amp;</span><span style="color:#f8f8f2;">arguments).</span><span style="color:#66d9ef;">output</span><span style="color:#f8f8f2;">().</span><span style="color:#66d9ef;">unwrap</span><span style="color:#f8f8f2;">();
+</span></code></pre>
+<p>And finally let's change our <code>match</code> statement to either:</p>
+<ol>
+<li>Continue printing out &quot;Success&quot;</li>
+<li>Include the error code for &quot;Failure&quot;</li>
+<li>Warn when there's not an available exit code</li>
+</ol>
+<pre style="background-color:#272822;">
+<code><span style="color:#f92672;">match</span><span style="color:#f8f8f2;"> output.status.</span><span style="color:#66d9ef;">code</span><span style="color:#f8f8f2;">() {
+    </span><span style="font-style:italic;color:#66d9ef;">Some</span><span style="color:#f8f8f2;">(</span><span style="color:#ae81ff;">0</span><span style="color:#f8f8f2;">) </span><span style="color:#f92672;">=&gt; </span><span style="color:#f8f8f2;">println!(</span><span style="color:#e6db74;">&quot;[Success] Exit 0&quot;</span><span style="color:#f8f8f2;">),
+    </span><span style="font-style:italic;color:#66d9ef;">Some</span><span style="color:#f8f8f2;">(err) </span><span style="color:#f92672;">=&gt; </span><span style="color:#f8f8f2;">println!(</span><span style="color:#e6db74;">&quot;[Failure] Exit </span><span style="color:#ae81ff;">{}</span><span style="color:#e6db74;">&quot;</span><span style="color:#f8f8f2;">, err),
+    </span><span style="color:#f92672;">_ =&gt; </span><span style="color:#f8f8f2;">println!(</span><span style="color:#e6db74;">&quot;[Unknown] Unable to read exit code&quot;</span><span style="color:#f8f8f2;">),
+}
+</span></code></pre>
+<p>That's it! This will allow us to run a program multiple times and see when it fails! We have a working program close to the <a href="https://github.com/cbzehner/stress/commit/aee382fd4355b8f057d212adf8c12d3fd45498d4">initial commit for <code>stress</code> itself</a>.</p>
+<p>Try it out!</p>
+<pre style="background-color:#272822;">
+<code><span style="color:#f8f8f2;">cargo run</span><span style="color:#f92672;"> --</span><span style="color:#f8f8f2;"> --runs 1 -- ls -a
+[Success] Exit 0
+</span></code></pre>
+<p>and</p>
+<pre style="background-color:#272822;">
+<code><span style="color:#f8f8f2;">cargo run -- --runs 1 -- ls --gibberish
+[Failure] Exit 1
+</span></code></pre><h1 id="what-comes-next">What comes next?</h1>
+<p>...</p>
+<h1 id="areas-of-further-improvement">Areas of further improvement</h1>
+<ul>
+<li>Better internal error handling</li>
+<li>Hide the print statements when we detect another program, rather than a human, is running <code>stress</code></li>
+<li>Use any of <a href="https://lib.rs/crates/sysexit">the</a> <a href="https://lib.rs/crates/exitcode">exit</a> <a href="https://lib.rs/crates/exit-code">code</a> libraries to provide additional information about the type of failure</li>
+</ul>
+<h3 id="footnotes">Footnotes</h3>
+<p><a name="correct-exit-codes">1</a>: It takes <a href="https://www.shellscript.sh/exitcodes.html">some careful thought</a> to chain programs together in the terminal so that failures in intermidate steps aren't overwritten by later commands.</p>
+<p><a name="incorrect-usage">2</a>: If a program does not conform to the convention of non-zero exit codes to indicate success, its probably an oversight/bug and worth raising with the program author.</p>
+
+    </div>
+
+    
+    
+
+    <div class="post-footer">
+        
+            
+                <div class="post-tags">
+                    
+                        <a href="https:&#x2F;&#x2F;cbzehner.com&#x2F;tags&#x2F;rust&#x2F;">#rust</a>
+                    
+                        <a href="https:&#x2F;&#x2F;cbzehner.com&#x2F;tags&#x2F;commandline&#x2F;">#commandline</a>
+                    
+                </div>
+            
+            
+                <div class="post-nav">
+                    
+                        <a class="previous" href="https:&#x2F;&#x2F;cbzehner.com&#x2F;introducing-stress&#x2F;">‹ Introducing stress</a>
+                    
+                    
+                    
+                    
+                </div>
+            
+
+        
+
+    </div>
+
+    
+    
+</article>
+
+
+                </div>
+            </main>
+
+            
+            
+        </div>
+
+      
+          <script type="text/javascript" src="https:&#x2F;&#x2F;cbzehner.com&#x2F;even.js" ></script>
+      
+    </body>
+
+</html>
