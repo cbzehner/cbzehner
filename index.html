@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <title>Chris Zehner</title>
+    <link rel="icon"
+        href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🚀</text></svg>">
+    <style>
+        :root {
+            --background-color: #111827;
+            --foreground-color: #F3F4F6;
+            --consumed-output-color: #D1D5DB;
+            --font-size: 2rem;
+            --font-family: 'Courier New', Courier, monospace;
+            /* Mutable: Controls caret location as user types */
+            --command-prompt-input-length: 0ch;
+
+            /* Mobile-only rules */
+            @media only screen and (hover: none) and (pointer: coarse) {
+                --font-size: 3rem;
+            }
+        }
+
+        body {
+            display: grid;
+            justify-content: center;
+            align-content: center;
+
+            color: var(--foreground-color);
+            background-color: var(--background-color);
+
+            font-size: var(--font-size);
+            font-family: var(--font-family)
+        }
+
+        #text-adventure {
+            max-width: 80vw;
+        }
+
+        #text-adventure>p {
+            color: var(--consumed-output-color);
+        }
+
+        #text-adventure>p:last-of-type {
+            color: var(--foreground-color)
+        }
+
+        #command-prompt {
+            display: flex;
+            align-items: center;
+            width: 100%;
+
+            position: relative;
+            white-space: nowrap;
+
+            border-radius: 0.5rem;
+            padding-left: 0.5rem;
+        }
+
+        #command-prompt:hover {
+            box-shadow: 0 0 0.25rem var(--foreground-color);
+        }
+
+        #command-prompt::before {
+            content: "> ";
+        }
+
+        #command-prompt::after {
+            content: "";
+            animation: cursor 800ms infinite;
+
+            display: inline-block;
+            height: var(--font-size);
+            width: 1ch;
+
+            position: relative;
+            border-radius: 0;
+            margin-left: calc(-95% + var(--command-prompt-input-length));
+            background: var(--foreground-color);
+        }
+
+        @-webkit-keyframes cursor {
+            0% {
+                opacity: 0;
+            }
+
+            50% {
+                opacity: 1;
+            }
+
+            to {
+                opacity: 0;
+            }
+        }
+
+        @keyframes cursor {
+            0% {
+                opacity: 0;
+            }
+
+            50% {
+                opacity: 1;
+            }
+
+            to {
+                opacity: 0;
+            }
+        }
+
+        #command-prompt>input {
+            width: 95%;
+            height: var(--font-size);
+
+            border: none;
+
+            color: var(--foreground-color);
+            background-color: var(--background-color);
+            caret-color: var(--background-color);
+
+            font-size: var(--font-size);
+            font-family: var(--font-family)
+        }
+
+        #command-prompt>input:focus {
+            outline: none;
+        }
+    </style>
+</head>
+
+<body>
+    <script type="module">
+        import * as wasm from "./pkg/text_adventure.js";
+
+        wasm.default().then((module) => {
+            // game.initialize();
+
+        });
+    </script>
+    <div id="text-adventure">
+        <p>You finally reach the end of the trail, emerging into a forest clearing with a small, wooden cabin. The path
+            continues to the cabin's porch.</p>
+        <p>You see a faint wisp of smoke coming from the chimmney of the cabin, maybe someone is home?</p>
+        <p>As you glance around the clearing, it appears to be heavily wooded on all sides. The only path is back the
+            way you came.</p>
+        <span id="command-prompt">
+            <input type="text" autofocus>
+        </span>
+    </div>
+    <script defer>
+        document.querySelector('#command-prompt>input').addEventListener('input', event => {
+            const inputElement = event.target;
+            const commandPrompt = document.querySelector('#command-prompt');
+            commandPrompt.style.setProperty("--command-prompt-input-length", `${inputElement.value.length}ch`);
+        })
+    </script>
+</body>
+
+</html>

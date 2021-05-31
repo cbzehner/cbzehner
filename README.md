@@ -5,13 +5,25 @@
   <strong><a href="https://cbzehner.com">Try it out!</a></strong>
 </div>
 
+# Credits
+
+Thanks to:
+- TailwindCSS for the [color palette](https://tailwindcss.com/docs/customizing-colors)
+- LogRocket for the [WASM & Rust starter kit](https://blog.logrocket.com/getting-started-with-webassembly-and-rust/)
+- Rust Lang's WASM Working for an [amazing introductory book](https://rustwasm.github.io/docs/book/game-of-life/implementing.html)
+- Chris Coyier's article on [Old Timey Terminal Styling](https://css-tricks.com/old-timey-terminal-styling/)
+- suggestions on styling the focus state https://moderncss.dev/custom-css-styles-for-form-inputs-and-textareas/#focus-state-styles
+- https://terminalcss.xyz for the terminal prompt
+- more vintage effects https://blog.carbonfive.com/vintage-terminal-effect-in-css3/
+
 ## Development Notes
 
 ### User Experience
 - typing sounds
 - black background 
 - white text with blinking cursor 
-- transformer input animation 
+- animation for input from the command prompt being transformed into output
+- output text should have a "typing animation"
 
 ### Text Adventure Engine
 #### Models 
