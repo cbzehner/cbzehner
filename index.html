@@ -138,7 +138,7 @@
             const game = wasm.Game.initialize();
             document.querySelector('#command-prompt>input').addEventListener('change', event => {
                 // TODO: Add as a paragraph prefix'd with `>` instead of logging.
-                console.log(game.send_command(event.target.value));
+                console.log(`Output: ${game.send_command(event.target.value)}`);
                 resetCommandPrompt();
             })
         });
