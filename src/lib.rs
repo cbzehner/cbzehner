@@ -1,3 +1,10 @@
+mod action;
+mod event;
+mod game;
+mod item;
+mod object;
+mod obstacle;
+mod player;
 mod utils;
 
 use wasm_bindgen::prelude::*;
@@ -9,11 +16,20 @@ use wasm_bindgen::prelude::*;
 static ALLOC: wee_alloc::WeeAlloc = wee_alloc::WeeAlloc::INIT;
 
 #[wasm_bindgen]
-extern {
-    fn alert(s: &str);
-}
+pub struct Game {}
 
 #[wasm_bindgen]
-pub fn greet() {
-    alert("Hello, text-adventure!");
+impl Game {
+    pub fn initialize() -> Self {
+        Self::new()
+    }
+
+    pub fn send_command(&mut self, input: &str) -> String {
+        // Simply echo the input back for now
+        input.to_string()
+    }
+
+    fn new() -> Self {
+        Self {}
+    }
 }

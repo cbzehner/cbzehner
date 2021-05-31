@@ -126,17 +126,26 @@
             outline: none;
         }
     </style>
+    <script type="module" defer>
+        import * as wasm from "./pkg/text_adventure.js";
+
+        function resetCommandPrompt() {
+            document.querySelector('#command-prompt>input').value = "";
+            document.querySelector('#command-prompt').style.setProperty("--command-prompt-input-length", "0ch");
+        }
+
+        wasm.default().then((module) => {
+            const game = wasm.Game.initialize();
+            document.querySelector('#command-prompt>input').addEventListener('change', event => {
+                // TODO: Add as a paragraph prefix'd with `>` instead of logging.
+                console.log(game.send_command(event.target.value));
+                resetCommandPrompt();
+            })
+        });
+    </script>
 </head>
 
 <body>
-    <script type="module">
-        import * as wasm from "./pkg/text_adventure.js";
-
-        wasm.default().then((module) => {
-            // game.initialize();
-
-        });
-    </script>
     <div id="text-adventure">
         <p>You finally reach the end of the trail, emerging into a forest clearing with a small, wooden cabin. The path
             continues to the cabin's porch.</p>
